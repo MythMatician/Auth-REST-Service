@@ -14,9 +14,9 @@ let dbUrl: string;
 
 // Dev Cluster
 if (process.env.NODE_ENV === "development") {
-  dbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URL}/Test-DB-DEV?retryWrites=true&w=majority`;
+  dbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URL}/AuthService-DEV?retryWrites=true&w=majority`;
 } else {
-  dbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URL}/Test-DB-PROD?retryWrites=true&w=majority`;
+  dbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URL}/AuthService-PROD?retryWrites=true&w=majority`;
 }
 
 // DB Connection
