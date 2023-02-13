@@ -12,7 +12,6 @@ const app: any = express();
 const Port: string = process.env.PORT;
 let dbUrl: string;
 
-// Dev Cluster
 if (process.env.NODE_ENV === "development") {
   dbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URL}/AuthService-DEV?retryWrites=true&w=majority`;
 } else {
