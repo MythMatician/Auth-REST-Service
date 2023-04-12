@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import * as jsonwebtoken from "jsonwebtoken";
-const { sign, decode, verify, JsonWebTokenError } = jsonwebtoken;
+import  jwt from "jsonwebtoken";
+const { JsonWebTokenError } = jwt;
 
 export const verifyToken: any = async (
   req: Request,
@@ -19,7 +19,7 @@ export const verifyToken: any = async (
   }
 
   try {
-    verify(token, process.env.TOKEN_KEY);
+    jwt.verify(token, process.env.TOKEN_KEY);
     next();
   } catch (err) {
     if (err instanceof JsonWebTokenError) {

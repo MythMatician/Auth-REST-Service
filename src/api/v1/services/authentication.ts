@@ -1,8 +1,7 @@
 // Prisma Connection
 import User from "../models/users";
 
-import * as jsonwebtoken from "jsonwebtoken";
-const { sign, decode, verify } = jsonwebtoken;
+import jwt from "jsonwebtoken";
 import * as bcrypt from "bcrypt";
 
 export const handleLogin: any = async (body: any) => {
@@ -17,7 +16,7 @@ export const handleLogin: any = async (body: any) => {
         where: { Email: body.Email },
         data: { LastLogin: new Date() },
       });
-      const token: string = sign({ user }, process.env.TOKEN_KEY);
+      const token: string = jwt.sign({ user }, process.env.TOKEN_KEY);
 
       return token;
     } else {
