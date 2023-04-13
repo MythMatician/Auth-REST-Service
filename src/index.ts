@@ -18,7 +18,6 @@ if (process.env.NODE_ENV === "development") {
   dbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_URL}/AuthService-PROD?retryWrites=true&w=majority`;
 }
 
-// DB Connection
 const main: any = async () => {
   mongoose.set("strictQuery", false);
   mongoose.connect(dbUrl, () => {
@@ -28,23 +27,18 @@ const main: any = async () => {
 
 main().catch((err: any) => console.log(err));
 
-// Middleware App-level
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Logging Middleware
 app.use(morgan("tiny"));
 
-// Test Endpoint
 app.get("/", (req, res) => {
   res.send("⚡️WORKING⚡️");
 });
 
-// Route Middleware
 app.use("/api/v1", routerV1);
 
-// Error Middleware
 app.use(handleError);
 
 app.listen(Port, () => {
